@@ -1,0 +1,13 @@
+Package: quasiNewtonMM
+Type: Package
+Title: Quasi-Newton acceleration scheme for MM algorithms
+Version: 0.1.0
+Depends: R (>= 3.5.0)
+Authors@R: c(
+    person("Medha", "Agarwal", email = "medhaaga@gmail.com", role = c("aut", "cre")),
+    person("Jason", "Xu", email = "jason.q.xu$duke.edu", role = "aut"))
+Maintainer: Medha Agarwal <medhaaga@gmail.com>
+Description: Given a slow monotonous fixed-point iteration method (like MM algorithm), this package implements the Broyden's quasi-Newton method based acceleration scheme for fast-convergence. It finds root of MM residual function and differs from Broyden's quasi-Newton method in secant approximation that uses information from MM algorithm map.
+License: GPL (>=2)
+Encoding: UTF-8
+LazyData: true
