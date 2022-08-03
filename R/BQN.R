@@ -201,7 +201,6 @@ LBQN <- function(par, fixptfn, objfn, ... , control=list()) {
 
 
     gamma_t <- as.numeric(crossprod(u, v))/as.numeric(crossprod(v, v))
-    H_init <- gamma_t*diag(P)
     q <- u
     alpha <- rep(0,min(m, iter-1))
 
@@ -213,7 +212,7 @@ LBQN <- function(par, fixptfn, objfn, ... , control=list()) {
       }
     }
 
-    r <- H_init %*% q
+    r <- gamma_t * q
     if(iter >= 2){
       for (i in 1:min(m, iter-1)){
         r <- r + alpha[i]*m.u[[i]]
