@@ -32,7 +32,6 @@ BQN <- function(par, fixptfn, objfn, ... , control=list()) {
   iter <- 1
   p.now <- par
   H.old <- -diag(P)
-  H.new <- H.old
   U <- matrix(0, nrow = P, ncol = qn)
   W <- matrix(0, nrow = P, ncol = qn)
 
@@ -88,9 +87,8 @@ BQN <- function(par, fixptfn, objfn, ... , control=list()) {
     W[,old_secant] <- v
     old_secant <- (old_secant %% qn) + 1
 
-    prod1 <- solve(t(W) %*% W) %*% t(W)
-    H.new <- H.old - (H.old %*% W %*% prod1) + U %*% prod1
-    H.old <- H.new
+    prod1 <- solve(t(W) %*% W, t(W))
+    H.old <- H.old - (H.old %*% W %*% prod1) + U %*% prod1
 
 
     dir <- H.old %*% u
